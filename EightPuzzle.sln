@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EightPuzzle", "EightPuzzle\EightPuzzle.csproj", "{532830F6-8750-4994-A1BD-CFBA906B566E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EightPuzzle.Console", "EightPuzzle.Console\EightPuzzle.Console.csproj", "{4BD830F7-D71C-4576-80F1-91430A72B48C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{532830F6-8750-4994-A1BD-CFBA906B566E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{532830F6-8750-4994-A1BD-CFBA906B566E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{532830F6-8750-4994-A1BD-CFBA906B566E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{532830F6-8750-4994-A1BD-CFBA906B566E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BD830F7-D71C-4576-80F1-91430A72B48C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BD830F7-D71C-4576-80F1-91430A72B48C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BD830F7-D71C-4576-80F1-91430A72B48C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BD830F7-D71C-4576-80F1-91430A72B48C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DB1DC074-67A8-4E3C-B8AC-7BE0AEAE6835}
+	EndGlobalSection
+EndGlobal
