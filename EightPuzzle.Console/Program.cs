@@ -15,5 +15,5 @@ State initialState = new(
     searchDepth: 0
 );
 
-DfsSolver solver = new();
+DepthLimitedSolver solver = new(depthLimit: 100);
 solver.Solve(initialState);

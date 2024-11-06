@@ -19,7 +19,7 @@ public abstract class Solver
     protected int MaxSearchDepth = 0;
 
     public abstract void Solve(State initialState);
-
+    
     protected List<State> GenerateChildrenStates(State currentState)
     {
         var children = new List<State>();
