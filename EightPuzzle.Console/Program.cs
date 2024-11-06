@@ -15,5 +15,5 @@ State initialState = new(
     searchDepth: 0
 );
 
-BfsSolver solver = new();
+DfsSolver solver = new();
 solver.Solve(initialState);
