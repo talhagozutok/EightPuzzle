@@ -13,13 +13,40 @@ public abstract class Solver
             { 3, 4, 5 },
             { 6, 7, 8 }
     };
+
     protected int MaxFringeSize = 0;
     protected int NodesExpanded = 0;
     protected int MaxSearchDepth = 0;
 
     public abstract void Solve(State initialState);
 
-    protected abstract List<State> GenerateChildrenStates(State currentState);
+    protected List<State> GenerateChildrenStates(State currentState)
+    {
+        var children = new List<State>();
+
+        // Generate possible moves and add valid ones
+        var directions = new (int dx, int dy, string move)[]
+        {
+            (0, -1, "left"),
+            (0, 1, "right"),
+            (-1, 0, "up"),
+            (1, 0, "down")
+        };
+
+        foreach (var (dx, dy, move) in directions)
+        {
+            var childState = currentState.MoveZero(dx, dy);
+            if (childState is not null)
+            {
+                childState.LastMove = move;
+                childState.Parent = currentState;
+                childState.SearchDepth = currentState.SearchDepth + 1;
+                children.Add(childState);
+            }
+        }
+
+        return children;
+    }
 
     protected void PrintResults(State finalState)
     {
@@ -32,9 +59,7 @@ public abstract class Solver
             Console.Write(move + " ");
         }
 
-        var costOfPath = path.Count;
-
-        Console.WriteLine($"\nCost of path: {costOfPath}");
+        Console.WriteLine($"\nCost of path: {path.Count}");
         Console.WriteLine($"Nodes expanded: {NodesExpanded}");
         Console.WriteLine($"Max fringe size: {MaxFringeSize}");
         Console.WriteLine($"Max search depth: {MaxSearchDepth}");
