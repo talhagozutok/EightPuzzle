@@ -1,13 +1,8 @@
 ﻿namespace EightPuzzle;
 
-public class Board
+public class Board(int[,] tiles)
 {
-    public int[,] Tiles { get; set; }
-
-    public Board(int[,] tiles)
-    {
-        Tiles = (int[,])tiles.Clone();
-    }
+    public int[,] Tiles { get; set; } = (int[,])tiles.Clone();
 
     // Find the index of zero (ie. empty tile)
     public (int, int) IndexOfZero()

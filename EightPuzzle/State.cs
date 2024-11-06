@@ -1,18 +1,10 @@
 ﻿namespace EightPuzzle;
-public class State
+public class State(Board currentBoard, State? parent, string lastMove, int searchDepth)
 {
-    public Board CurrentBoard { get; set; }
-    public State? Parent { get; set; }
-    public string LastMove { get; set; }
-    public int SearchDepth { get; set; }
-
-    public State(Board currentBoard, State? parent, string lastMove, int searchDepth)
-    {
-        CurrentBoard = currentBoard;
-        Parent = parent;
-        LastMove = lastMove;
-        SearchDepth = searchDepth;
-    }
+    public Board CurrentBoard { get; set; } = currentBoard;
+    public State? Parent { get; set; } = parent;
+    public string LastMove { get; set; } = lastMove;
+    public int SearchDepth { get; set; } = searchDepth;
 
     // Move the empty tile
     public State? MoveZero(int dx, int dy)
