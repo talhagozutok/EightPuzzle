@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EightPuzzle;
+﻿namespace EightPuzzle;
 public abstract class Solver
 {
     protected readonly int[,] GoalState = new int[3, 3]
