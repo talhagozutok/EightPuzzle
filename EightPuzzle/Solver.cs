@@ -8,9 +8,9 @@ public abstract class Solver
             { 6, 7, 8 }
     };
 
-    protected int MaxFringeSize = 0;
-    protected int NodesExpanded = 0;
-    protected int MaxSearchDepth = 0;
+    public int MaxFringeSize = 0;
+    public int NodesExpanded = 0;
+    public int MaxSearchDepth = 0;
 
     public abstract void Solve(State initialState, bool printResults = true);
     
