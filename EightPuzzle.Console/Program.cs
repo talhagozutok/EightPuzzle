@@ -1,9 +1,30 @@
 ﻿using EightPuzzle;
 
-int numProblems = 10;
-Console.WriteLine($"Running benchmark on {numProblems} random 8-puzzle problems...\n");
+ProblemGenerator generator = new();
+Board randomBoard = generator.GenerateRandomBoard();
 
-var benchmark = new PuzzleSolverBenchmark();
-benchmark.RunBenchmark(numProblems);
+Console.WriteLine("Generated Puzzle:");
+PrintBoard(randomBoard);
 
-Console.WriteLine("\nBenchmark completed.");
+State initialState = new(
+    currentBoard: randomBoard,
+    parent: null,
+    lastMove: "",
+    searchDepth: 0
+);
+
+BfsSolver solver = new();
+solver.Solve(initialState);
+
+void PrintBoard(Board board)
+{
+    for (int i = 0; i < board.Tiles.GetLength(0); i++)
+    {
+        for (int j = 0; j < board.Tiles.GetLength(1); j++)
+        {
+            Console.Write(board.Tiles[i, j] + " ");
+        }
+        Console.WriteLine();
+    }
+    Console.WriteLine();
+}
