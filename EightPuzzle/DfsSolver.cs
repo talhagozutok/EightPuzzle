@@ -1,24 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EightPuzzle;
 
-namespace EightPuzzle;
-public class DfsSolver
+public class DfsSolver : Solver
 {
-    private readonly int[,] GoalState = new int[3, 3]
-    {
-            { 0, 1, 2 },
-            { 3, 4, 5 },
-            { 6, 7, 8 }
-    };
-
-    private int MaxFringeSize = 0;
-    private int NodesExpanded = 0;
-    private int MaxSearchDepth = 0;
-
-    public void Solve(State initialState)
+    public override void Solve(State initialState)
     {
         var visited = new HashSet<Board>();
         var stack = new Stack<State>();
@@ -40,7 +24,6 @@ public class DfsSolver
                 MaxSearchDepth = state.SearchDepth;
             }
 
-            // Check if the current state is the goal
             if (state.CurrentBoard.IsEqual(GoalState))
             {
                 PrintResults(state);
@@ -49,7 +32,6 @@ public class DfsSolver
 
             NodesExpanded++;
 
-            // Generate child states and push to the stack
             var children = GenerateChildrenStates(state);
             foreach (var child in children)
             {
@@ -62,7 +44,7 @@ public class DfsSolver
         }
     }
 
-    private List<State> GenerateChildrenStates(State currentState)
+    protected override List<State> GenerateChildrenStates(State currentState)
     {
         var children = new List<State>();
 
@@ -87,35 +69,5 @@ public class DfsSolver
         }
 
         return children;
-    }
-
-    private void PrintResults(State finalState)
-    {
-        var path = FindPath(finalState);
-        path.Reverse(); // Reverse the path to get it from the initial state to the final state
-
-        Console.WriteLine("Solution Moves:");
-        foreach (var move in path)
-        {
-            Console.Write(move + " ");
-        }
-
-        var costOfPath = path.Count;
-
-        Console.WriteLine($"\nCost of path: {costOfPath}");
-        Console.WriteLine($"Nodes expanded: {NodesExpanded}");
-        Console.WriteLine($"Max fringe size: {MaxFringeSize}");
-        Console.WriteLine($"Max search depth: {MaxSearchDepth}");
-    }
-
-    private static List<string> FindPath(State state)
-    {
-        var path = new List<string>();
-        while (state.Parent is not null)
-        {
-            path.Add(state.LastMove);
-            state = state.Parent;
-        }
-        return path;
     }
 }

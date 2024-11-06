@@ -2,18 +2,9 @@
 
 namespace EightPuzzle;
 
-public class BfsSolver
+public class BfsSolver : Solver
 {
-    private readonly int[,] GoalState = new int[3, 3]
-    {
-        { 0, 1, 2 },
-        { 3, 4, 5 },
-        { 6, 7, 8 }
-    };
-    private int MaxFringeSize = 0;
-    private int NodesExpanded = 0;
-
-    public void Solve(State initialState)
+    public override void Solve(State initialState)
     {
         var visited = new HashSet<Board>();
         var queue = new Queue<State>();
@@ -53,7 +44,7 @@ public class BfsSolver
         }
     }
 
-    private static List<State> GenerateChildrenStates(State currentState)
+    protected override List<State> GenerateChildrenStates(State currentState)
     {
         var children = new List<State>();
 
@@ -79,37 +70,5 @@ public class BfsSolver
         }
 
         return children;
-    }
-
-
-    private void PrintResults(State finalState)
-    {
-        var path = FindPath(finalState);
-        path.Reverse(); // Reverse the path to get it from the initial state to the final state
-
-        Console.WriteLine("Solution Moves:");
-        foreach (var move in path)
-        {
-            Console.WriteLine(move);
-        }
-
-        var costOfPath = path.Count;
-
-        Console.WriteLine($"Cost of path: {costOfPath}");
-        Console.WriteLine($"Nodes expanded: {NodesExpanded}");
-        Console.WriteLine($"Max fringe size: {MaxFringeSize}");
-    }
-
-
-    private static List<string> FindPath(State state)
-    {
-        var path = new List<string>();
-        while (state.Parent is not null)
-        {
-            path.Add(state.LastMove);
-            state = state.Parent;
-        }
-
-        return path;
     }
 }
