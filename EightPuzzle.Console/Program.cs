@@ -1,19 +1,30 @@
 ﻿using EightPuzzle;
 
-// Define the initial state of the puzzle
-int[,] startState = {
-    { 7, 2, 4 },
-    { 5, 0, 6 },
-    { 8, 3, 1 }
-};
+ProblemGenerator generator = new();
+Board randomBoard = generator.GenerateRandomBoard();
 
-Board board = new(startState);
+Console.WriteLine("Generated Puzzle:");
+PrintBoard(randomBoard);
+
 State initialState = new(
-    currentBoard: board,
+    currentBoard: randomBoard,
     parent: null,
     lastMove: "",
     searchDepth: 0
 );
 
-IterativeDeepeningSolver solver = new();
+BfsSolver solver = new();
 solver.Solve(initialState);
+
+void PrintBoard(Board board)
+{
+    for (int i = 0; i < board.Tiles.GetLength(0); i++)
+    {
+        for (int j = 0; j < board.Tiles.GetLength(1); j++)
+        {
+            Console.Write(board.Tiles[i, j] + " ");
+        }
+        Console.WriteLine();
+    }
+    Console.WriteLine();
+}
