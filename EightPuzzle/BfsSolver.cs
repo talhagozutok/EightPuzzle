@@ -57,9 +57,6 @@ public class BfsSolver
     {
         var children = new List<State>();
 
-        // Get the position of the zero tile
-        var (zeroX, zeroY) = currentState.CurrentBoard.IndexOfZero();
-
         // Generate possible moves and add valid ones
         var directions = new (int dx, int dy, string move)[]
         {
