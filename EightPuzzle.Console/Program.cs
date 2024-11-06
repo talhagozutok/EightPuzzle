@@ -15,5 +15,5 @@ State initialState = new(
     searchDepth: 0
 );
 
-DepthLimitedSolver solver = new(depthLimit: 100);
+IterativeDeepeningSolver solver = new();
 solver.Solve(initialState);
