@@ -1,7 +1,7 @@
 ﻿namespace EightPuzzle;
 public class IterativeDeepeningSolver : Solver
 {
-    public override void Solve(State initialState)
+    public override void Solve(State initialState, bool printResults = true)
     {
         int depth = 0;
         while (true)
@@ -10,7 +10,10 @@ public class IterativeDeepeningSolver : Solver
 
             if (result is not null)
             {
-                PrintResults(result);
+                if (printResults)
+                {
+                    PrintResults(result);
+                }
                 return;
             }
 

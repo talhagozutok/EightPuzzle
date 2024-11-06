@@ -12,7 +12,7 @@ public abstract class Solver
     protected int NodesExpanded = 0;
     protected int MaxSearchDepth = 0;
 
-    public abstract void Solve(State initialState);
+    public abstract void Solve(State initialState, bool printResults = true);
     
     protected List<State> GenerateChildrenStates(State currentState)
     {

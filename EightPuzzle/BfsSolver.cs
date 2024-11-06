@@ -4,7 +4,7 @@ namespace EightPuzzle;
 
 public class BfsSolver : Solver
 {
-    public override void Solve(State initialState)
+    public override void Solve(State initialState, bool printResults = true)
     {
         var visited = new HashSet<Board>();
         var queue = new Queue<State>();
@@ -25,7 +25,10 @@ public class BfsSolver : Solver
             // Check if the current state is the goal
             if (state.CurrentBoard.IsEqual(GoalState))
             {
-                PrintResults(state);
+                if (printResults)
+                {
+                    PrintResults(state);
+                }
                 return;
             }
 

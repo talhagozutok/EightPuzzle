@@ -4,7 +4,7 @@ namespace EightPuzzle;
 
 public class DfsSolver : Solver
 {
-    public override void Solve(State initialState)
+    public override void Solve(State initialState, bool printResults = true)
     {
         var visited = new HashSet<Board>();
         var stack = new Stack<State>();
@@ -28,7 +28,10 @@ public class DfsSolver : Solver
 
             if (state.CurrentBoard.IsEqual(GoalState))
             {
-                PrintResults(state);
+                if (printResults)
+                {
+                    PrintResults(state);
+                }
                 return;
             }
 

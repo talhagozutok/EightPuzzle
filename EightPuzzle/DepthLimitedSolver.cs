@@ -8,7 +8,7 @@ public class DepthLimitedSolver : Solver
         this.depthLimit = depthLimit;
     }
 
-    public override void Solve(State initialState)
+    public override void Solve(State initialState, bool printResults = true)
     {
         var visited = new HashSet<Board>();
         var stack = new Stack<State>();
@@ -39,7 +39,10 @@ public class DepthLimitedSolver : Solver
             // Check if the current state is the goal
             if (state.CurrentBoard.IsEqual(GoalState))
             {
-                PrintResults(state);
+                if (printResults)
+                {
+                    PrintResults(state);
+                }
                 return;
             }
 
