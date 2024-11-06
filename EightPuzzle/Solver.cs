@@ -47,11 +47,8 @@ public abstract class Solver
         var path = FindPath(finalState);
         path.Reverse(); // Reverse the path to get it from the initial state to the final state
 
-        Console.WriteLine("Solution Moves:");
-        foreach (var move in path)
-        {
-            Console.Write(move + " ");
-        }
+        Console.WriteLine("Solution Moves (moves of the zero tile only): ");
+        Console.WriteLine(string.Join(", ", path));
 
         Console.WriteLine($"\nCost of path: {path.Count}");
         Console.WriteLine($"Nodes expanded: {NodesExpanded}");
