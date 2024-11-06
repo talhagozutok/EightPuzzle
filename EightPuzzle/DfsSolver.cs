@@ -1,5 +1,7 @@
 ﻿using EightPuzzle;
 
+namespace EightPuzzle;
+
 public class DfsSolver : Solver
 {
     public override void Solve(State initialState)
